@@ -58,16 +58,16 @@ export class SelfPlane extends Component {
 
     private _onTriggerEnter(event: ITriggerEvent){
         // some trick to fix "trigger vs trigger problem" in physx
-        if(event.otherCollider.material.friction == 100){
-            return;
-        }
+        // if(event.otherCollider.material.friction == 100){
+        //     return;
+        // }
 
         const collisionGroup = event.otherCollider.getGroup();
         if(collisionGroup === Constant.CollisionType.ENEMY_PLANE || collisionGroup === Constant.CollisionType.ENEMY_BULLET){
             if(this._currLife === this.lifeValue){
                 this.blood.active = true;
             }
-            this._currLife --;
+            // this._currLife --;
             this.bloodFace.setScale(this._currLife / this.lifeValue, 1, 1);
             if(this._currLife <=0){
                 this.isDie = true;

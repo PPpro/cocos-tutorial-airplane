@@ -124,36 +124,40 @@ export class GameManager extends Component {
         }
 
         this._currCreateEnemyTime += deltaTime;
-        if(this._combinationInterval === Constant.Combination.PLAN1){
-            if(this._currCreateEnemyTime > this.createEnemyTime){
-                this.createEnemyPlane();
-                this._currCreateEnemyTime = 0;
-            }
-        } else if(this._combinationInterval === Constant.Combination.PLAN2){
-            if(this._currCreateEnemyTime > this.createEnemyTime * 3){
-                const randomCombination = math.randomRangeInt(1, 3);
-                if (randomCombination === Constant.Combination.PLAN2) {
-                    this.createCombination1();
-                } else {
-                    this.createEnemyPlane();
-                }
-
-                this._currCreateEnemyTime = 0;
-            }
-        } else {
-            if(this._currCreateEnemyTime > this.createEnemyTime * 2){
-                const randomCombination = math.randomRangeInt(1, 4);
-                if (randomCombination === Constant.Combination.PLAN2) {
-                    this.createCombination1();
-                } else if (randomCombination === Constant.Combination.PLAN3) {
-                    this.createCombination2();
-                } else {
-                    this.createEnemyPlane();
-                }
-
-                this._currCreateEnemyTime = 0;
-            }
+        if(this._currCreateEnemyTime > this.createEnemyTime){
+            this.createCombination1();
+            this._currCreateEnemyTime = 1;
         }
+        // if(this._combinationInterval === Constant.Combination.PLAN1){
+        //     if(this._currCreateEnemyTime > this.createEnemyTime){
+        //         this.createEnemyPlane();
+        //         this._currCreateEnemyTime = 0;
+        //     }
+        // } else if(this._combinationInterval === Constant.Combination.PLAN2){
+        //     if(this._currCreateEnemyTime > this.createEnemyTime * 3){
+        //         const randomCombination = math.randomRangeInt(1, 3);
+        //         if (randomCombination === Constant.Combination.PLAN2) {
+        //             this.createCombination1();
+        //         } else {
+        //             this.createEnemyPlane();
+        //         }
+
+        //         this._currCreateEnemyTime = 0;
+        //     }
+        // } else {
+        //     if(this._currCreateEnemyTime > this.createEnemyTime * 2){
+        //         const randomCombination = math.randomRangeInt(1, 4);
+        //         if (randomCombination === Constant.Combination.PLAN2) {
+        //             this.createCombination1();
+        //         } else if (randomCombination === Constant.Combination.PLAN3) {
+        //             this.createCombination2();
+        //         } else {
+        //             this.createEnemyPlane();
+        //         }
+
+        //         this._currCreateEnemyTime = 0;
+        //     }
+        // }
     }
 
     public returnMain(){
